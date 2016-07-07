@@ -4,7 +4,7 @@ TabularTables.Teacher = new Tabular.Table({
     name: "Teacher",
     collection: Teacher,
     columns: [
-        {data: "id", title: "ID"},
+        {data: "_id", title: "ID"},
         {data: "name", title: "Name"},
         {data: "gender", title: "Gender"},
         {data: "address", title: "Address"},

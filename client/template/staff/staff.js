@@ -20,15 +20,8 @@ Template.staffActions.onRendered(function () {
 });
 Template.staffActions.events({
     'click .jsUpdate': function () {
-        // Bert.alert('<h1>កែប្រែ</h1>', 'success', 'growl-top-right');
-        //
         console.log(this);
-        // FlowRouter.go('staffUpdate', {id: this._id});
-        // console.log(this._id);
-        // Meteor.call('findOne', 'Staff', {_id: this._id}, {}, function (error, result) {
-        //     if (error) {
-        //         Bert.alert(error.message, 'danger', 'growl-bottom-right');
-        //     } else {
+
         alertify.staff(renderTemplate(Template.staffUpdate, this))
             .set({
                 title: fa('edit', ' Staff')
@@ -62,7 +55,7 @@ Template.staffUpdate.helpers({
         return info;
     }
 });
-
+Template.staffUpdate.events({});
 AutoForm.addHooks('staffUpdate', {
     onSuccess: function (formType, result) {
         FlowRouter.go('staff');
@@ -73,6 +66,13 @@ AutoForm.addHooks('staffUpdate', {
     }
 });
 AutoForm.addHooks('staffInsert', {
+    before: {
+        insert: function (doc) {
+            doc._id = idGenerator.gen(Staff, 4);
+            return doc;
+
+        }
+    },
     onSuccess: function (formType, result) {
         FlowRouter.go('staff');
         Bert.alert('Success', 'success', 'growl-top-right');

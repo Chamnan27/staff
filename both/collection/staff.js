@@ -1,10 +1,8 @@
 Staff = new Mongo.Collection('staff');
 
 StaffSchema = new SimpleSchema({
-    id: {
-        type: Number,
-        label: "ID",
-    },
+
+    
         name: {
         type: String,
         label: "Name",

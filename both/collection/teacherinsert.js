@@ -1,9 +1,10 @@
-Teacher= new Mongo.Collection('teacher');
+Teacher = new Mongo.Collection('teacher');
 
 TeacherSchema = new SimpleSchema({
+
     name: {
-    type: String,
-       label: "Name",
+        type: String,
+        label: "Name",
         max: 20
     },
 
@@ -41,4 +42,4 @@ TeacherSchema = new SimpleSchema({
 
 });
 
-    Teacher.attachSchema(TeacherSchema);
+Teacher.attachSchema(TeacherSchema);
