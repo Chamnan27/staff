@@ -1,25 +1,32 @@
 <template name="home">
     <h1 style="margin-top: 70px">Home Welcome</h1>
 
-
+    <button class="method_body">Method Testing</button>
+    {{#if data}}
+        {{data}}
+    {{else}}
+        <i class="fa fa-spinner fa-spin"></i>Wating...
+    {{/if}}
+    <hr>
     <div class="row">
         <div class="col-md-6 animated rotateInDownLeft">
-    <img src="./images.jpg"><br>
-
-
-    <p><button type="button" class="btn btn-success" id="play">Vong Veng
-        <span class="glyphicon glyphicon-play" aria-hidmeteor ="true"></span>
-    </button></p><br>
-    </div>
-
+            <img src="./images.jpg"><br>
+            <p>
+                <button type="button" class="btn btn-success" id="play">Vong Veng
+                    <span class="glyphicon glyphicon-play" aria-hidmeteor="true"></span>
+                </button>
+            </p>
+            <br>
+        </div>
         <div class="col-md-6 animated rotateInDownRight">
             <img src="./images (1).jpg">
-
-    <p><button type="button" class="btn btn-success" id="play1">Ah Gril
-        <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
-    </button></p><br>
+            <p>
+                <button type="button" class="btn btn-success" id="play1">Ah Gril
+                    <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                </button>
+            </p>
+            <br>
+        </div>
     </div>
-    </div>
-
-
+    <button type="button" class="btn btn-default js-test">Test</button>
 </template>

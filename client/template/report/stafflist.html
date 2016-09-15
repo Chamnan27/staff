@@ -1,0 +1,69 @@
+<template name="staffList">
+    <h1 class="page-header">Staff List</h1>
+    {{#autoForm schema =staffSchema id="staffList"}}
+        {{> afQuickField name='gender'}}
+        <button class="submit">View</button>
+    {{/autoForm}}
+    <hr>
+</template>
+<template name="staffListReport">
+
+    <div class="container">
+
+        <div class="row" >
+            <div class="col-md-18">
+                {{#if data}}
+                    <br>
+                    <br>
+                    <!--<form class="text-center">-->
+                    <table class="table table-bordered" bgcolor="blue">
+                        <thead>
+                        <tr bgcolor="#db7093">
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Gender</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{#each data}}
+                            <tr class="alert-info">
+                                <td>{{_id}}</td>
+                                <td>{{name}}</td>
+                                <td>{{gender}}</td>
+                            </tr>
+                        {{/each}}
+                        </tbody>
+
+                    </table>
+
+
+                    <!--</form>-->
+
+                {{else}}
+                    <i class="fa fa-spinner fa-spin "></i>Wating...
+                {{/if}}
+
+            </div>
+        </div>
+    </div>
+    <table class="table table-hover ">
+        <thead>
+        <tr>
+            <td>Lyyy</td>
+            <td>Name</td>
+            <td>Gender</td>
+        </tr>
+        </thead>
+        <!--</table>-->
+        <!--<table class="table">-->
+        <br>
+        <thead>
+        <tr>
+            <td>---</td>
+            <td>---</td>
+            <td>---</td>
+
+        </tr>
+        </thead>
+    </table>
+</template>

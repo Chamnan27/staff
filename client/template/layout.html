@@ -5,6 +5,8 @@
     <title>Rabbit</title>
 </head>
 <template name="MainLayout">
+
+
     <body style="margin-top: 25px">
     <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -25,12 +27,16 @@
                     {{#if currentUser}}
                         <li><a href="{{pathFor 'staff'}}">Staff</a></li>
                         <li><a href="{{pathFor '/teacher'}}">Teacher</a></li>
+                        <li><a href="{{pathFor '/staffList'}}">Report</a></li>
+                        <li><a href="{{pathFor '/staffContract'}}">View</a></li>
+
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-haspopup="true" aria-expanded="false">Data <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="{{pathFor 'staff'}}">Staff</a></li>
                                 <li><a href="{{pathFor '/teacher'}}">Teacher</a></li>
+
                             </ul>
                         </li>
                     {{/if}}

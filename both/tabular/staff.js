@@ -1,3 +1,4 @@
+import {Staff} from "../collection/staff";
 TabularTables = {};
 
 TabularTables.Staff = new Tabular.Table({

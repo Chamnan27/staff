@@ -26,7 +26,7 @@ Template.teacherActions.events({
             .set({
                 title: fa('edit', ' Teacher')
             })
-            .maximize();
+            .minBy();
     },
     'click .jsRemove': function () {
         var self = this;

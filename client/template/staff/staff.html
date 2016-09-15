@@ -16,7 +16,7 @@
 <template name="staffInsert">
     <h1 class="page-header">Staff Insert</h1>
 
-    {{#autoForm collection="Staff" id="staffInsert" type="insert"}}
+    {{#autoForm collection=staffCollection id="staffInsert" type="insert"}}
         <div class="row">
             <div class="col-md-6">
 
@@ -38,11 +38,10 @@
 <!--Update-->
 <template name="staffUpdate">
     <h1 class="page-header">Staff Update</h1>
-    <button> <i class="fa fa-reply js-Go-Back">Back</i></button>
-    {{#autoForm collection="Staff" id="staffUpdate" doc=this type="update"}}
+    <button> <i class= "fa fa-reply js-back">Back</i></button>
+    {{#autoForm collection=staffCollection id="staffUpdate" doc=this type="update"}}
         <div class="row">
             <div class="col-md-6">
-
                 {{> afQuickField name='name'}}
                 {{> afQuickField name='gender'}}
                 {{> afQuickField name='dob'}}

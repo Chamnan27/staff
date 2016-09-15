@@ -1,8 +1,21 @@
 // Index
+import  {Staff} from "../../../both/collection/staff";
+
 Template.staff.onRendered(function () {
     // Create new  alertify
     createNewAlertify('staff');
 });
+Template.staffInsert.helpers({
+    staffCollection (){
+        return Staff;
+    }
+});
+// Template.staffInsert.events({
+//     'click #staffInsert'() {
+//         FlowRouter.go('staff');
+//     }
+// });
+
 Template.staff.events({
     'click .jsAddNew': function () {
         alertify.staff(renderTemplate(Template.staffInsert))
@@ -19,6 +32,11 @@ Template.staffActions.onRendered(function () {
     createNewAlertify('staffUpdate');
 });
 Template.staffActions.events({
+    'click.js-back': function () {
+        FlowRouter.go('staff');
+    }
+});
+Template.staffActions.events({
     'click .jsUpdate': function () {
         console.log(this);
 
@@ -26,34 +44,68 @@ Template.staffActions.events({
             .set({
                 title: fa('edit', ' Staff')
             })
-            .maximize();
+            .minBy();
     },
 
     // });
     // },
     'click .jsRemove': function () {
         var self = this;
-        alertify.confirm(
-            'Remove',
-            'Are you sure to remove this!',
-            function (ok) {
-                Staff.remove(self._id);
-                Bert.alert('Success', 'success', 'growl-top-right');
-            },
-            null
-        );
+        console.log(self);
+        alertify.confirm('Are you sure want to remove?',
+            function (result, error) {
+                if (error) {
+                    console.log("error");
+                    Staff.remove(self._id);
+                    Bert.alert('Successfully Removed', 'success', 'growl-bottom-right');
+
+                }
+                else {
+                    Bert.alert(error.stack, 'danger', 'growl-top-right');
+                }
+            });
+        // alertify.confirm(
+        //     'Remove',
+        //     'Are you sure to remove this!',
+        //     function (ok) {
+        //         Staff.remove(self._id),function (error) {
+        //           if (!error){console.log("error");
+        //               Bert.alert('Delete', 'success', 'growl-top-right');
+        //           } else {
+        //
+        //               Bert.alert(error.message, 'danger', 'growl-top-right');
+        //           }
+        //         };
+        //
+        //     },
+        //     null
+        // );
     }
 });
 
-// Insert
-
 // Update
+// Template.staffUpdate.onCreate(function () {
+//   Tracker.autorun(function () {
+//       let id= FlowRouter.getParam('id');
+//       Meteor.subscribe("staff", id);
+//
+//   })
+// });
 Template.staffUpdate.helpers({
-    data: function () {
-        var id = FlowRouter.getParam('id');
-        var info = Staff.findOne({_id: id});
-        return info;
+    staffCollection (){
+        return Staff;
+    },
+    data(){
+
+        let id = FlowRouter.getParam('id');
+        console.log(staff.find().count());
+        return Staff.findOne({_id: id});
     }
+    // data: function () {
+    //     var id = FlowRouter.getParam('id');
+    //     var info = Staff.findOne({_id: id});
+    //     return info;
+    // }
 });
 Template.staffUpdate.events({});
 AutoForm.addHooks('staffUpdate', {
@@ -62,7 +114,8 @@ AutoForm.addHooks('staffUpdate', {
         Bert.alert('Success', 'success', 'growl-top-right');
     },
     onError: function (formType, error) {
-        Bert.alert('Error', 'danger', 'growl-top-right');
+
+        Bert.alert(error.message, 'danger', 'growl-top-right');
     }
 });
 AutoForm.addHooks('staffInsert', {
@@ -72,12 +125,13 @@ AutoForm.addHooks('staffInsert', {
             return doc;
 
         }
-    },
-    onSuccess: function (formType, result) {
-        FlowRouter.go('staff');
-        Bert.alert('Success', 'success', 'growl-top-right');
-    },
-    onError: function (formType, error) {
-        Bert.alert('Error', 'danger', 'growl-top-right');
     }
+    // onSuccess: function (formType, result) {
+    //     FlowRouter.go('staff');
+    //     console.log('remove');
+    //     Bert.alert('Success', 'success', 'growl-top-right');
+    // },
+    // onError: function (formType, error) {
+    //     Bert.alert('Error', 'danger', 'growl-top-right');
+    // }
 });

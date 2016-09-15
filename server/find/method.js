@@ -1,3 +1,4 @@
+
 Meteor.methods({
     findOne: function (collectionName, selector, option) {
         selector = selector == null ? {} : selector;

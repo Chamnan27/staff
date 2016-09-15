@@ -1,9 +1,7 @@
-Staff = new Mongo.Collection('staff');
+export const Staff = new Mongo.Collection('staff');
 
-StaffSchema = new SimpleSchema({
-
-    
-        name: {
+let StaffSchema = new SimpleSchema({
+    name: {
         type: String,
         label: "Name",
         max: 20
@@ -14,8 +12,8 @@ StaffSchema = new SimpleSchema({
         autoform: {
             type: 'select',
             options: [
-                {label: 'Male', value: 'M'},
-                {label: 'Female', value: 'F'}
+                {label: 'Male', value: 'Male'},
+                {label: 'Female', value: 'Female'}
             ]
         }
 
